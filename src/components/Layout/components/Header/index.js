@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faMagnifyingGlass, faCircleXmark, faPlus, faEllipsisVertical, faGlobe, faCoins, faGear, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faCircleXmark, faPlus, faEllipsisVertical, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion, faKeyboard, faUser } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -13,12 +13,14 @@ import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper'
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { GetCoinIcon, InboxIcon, LangagueIcon, MessageIcon, SearchIcon, SettingIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles)
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faGlobe} />,
+        icon: <LangagueIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -70,12 +72,12 @@ function Header() {
             to: '/@hoaa'
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <GetCoinIcon />,
             title: 'Get coins',
             to: '/coin'
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <SettingIcon />,
             title: 'Setting',
             to: '/setting'
         },
@@ -115,7 +117,7 @@ function Header() {
                             </button>
                             <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                             <button className={cx('search-btn')}>
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                <SearchIcon />
                             </button>
                         </div>
                     </HeadlessTippy>
@@ -129,9 +131,15 @@ function Header() {
                                         <FontAwesomeIcon icon={faCloudArrowUp} />
                                     </button> */}
                                     <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>Upload</Button>
-                                    <Tippy delay={[0, 300]} content='Message' placement='bottom'>
+                                    <Tippy delay={[0, 50]} content='Message' placement='bottom'>
                                         <button className={cx('action-btn')}>
-                                            <img className={cx('message-icon')} src={images.message} alt='' />
+                                            <MessageIcon />
+                                        </button>
+                                    </Tippy>
+                                    <Tippy delay={[0, 50]} content='Inbox' placement='bottom'>
+                                        <button className={cx('action-btn')}>
+                                            <InboxIcon />
+                                            <span className={cx('barge')}>15</span>
                                         </button>
                                     </Tippy>
                                 </>
@@ -150,7 +158,12 @@ function Header() {
                     >
                         {
                             currentUser ? (
-                                <img className={cx('user-avatar')} src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/b09a065e880e7f66256b32b984039efb.jpeg?x-expires=1678856400&x-signature=0zIgdha0MxsS6OK6hQQPf9evhB4%3D' alt='Nguyen Van A' />
+                                <Image
+                                    className={cx('user-avatar')}
+                                    src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/b09a065e880e7f66256b32b984039efb.jpeg?x-expires=1678856400&x-signature=0zIgdha0MxsS6OK6hQQPf9evhB4%3D'
+                                    alt='Nguyen Van A'
+                                // fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
+                                />
                             ) :
                                 (
                                     <button className={cx('more-btn')}>
