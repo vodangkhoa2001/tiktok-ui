@@ -12,7 +12,7 @@ import Search from '~/pages/Search'
 export const publicRoutes = [
     { path: '/', compnent: Home },
     { path: '/following', compnent: Following },
-    { path: '/profile', compnent: Profile },
+    { path: '/@:nickname', compnent: Profile },
     { path: '/upload', compnent: Upload, layout: HeaderOnly },
     { path: '/search', compnent: Search, layout: null },
 ]
