@@ -33,7 +33,8 @@ const MENU_ITEMS = [
                     type: 'language',
                     code: 'vi',
                     title: 'Tiếng Việt'
-                }
+                },
+
             ]
         }
     },
@@ -129,7 +130,7 @@ function Header() {
                             currentUser ? (
                                 <Image
                                     className={cx('user-avatar')}
-                                    src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/b09a065e880e7f66256b32b984039efb.jpeg?x-expires=1678856400&x-signature=0zIgdha0MxsS6OK6hQQPf9evhB4%3D'
+                                    src='https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ce79deb10a496a11f27f84fbcade1db5~c5_100x100.jpeg?x-expires=1679036400&x-signature=X8Elok%2B0eFZur%2BxZ1sgykYxp52w%3D'
                                     alt='Nguyen Van A'
                                 // fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
                                 />
