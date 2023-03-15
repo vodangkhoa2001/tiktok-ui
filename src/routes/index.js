@@ -1,5 +1,7 @@
+import routesConfig from '~/config/routes'
 // Layouts
 import { HeaderOnly } from '~/components/Layout'
+
 
 // Pages
 import Home from '~/pages/Home'
@@ -10,11 +12,11 @@ import Search from '~/pages/Search'
 
 // Public Routes
 export const publicRoutes = [
-    { path: '/', compnent: Home },
-    { path: '/following', compnent: Following },
-    { path: '/@:nickname', compnent: Profile },
-    { path: '/upload', compnent: Upload, layout: HeaderOnly },
-    { path: '/search', compnent: Search, layout: null },
+    { path: routesConfig.home, compnent: Home },
+    { path: routesConfig.following, compnent: Following },
+    { path: routesConfig.profile, compnent: Profile },
+    { path: routesConfig.upload, compnent: Upload, layout: HeaderOnly },
+    { path: routesConfig.search, compnent: Search, layout: null },
 ]
 
 // Private Routes

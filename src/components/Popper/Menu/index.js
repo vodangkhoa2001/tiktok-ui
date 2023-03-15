@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const cx = classNames.bind(styles)
 const defaultFunc = () => { }
-function Menu({ children, items = [], onChange = defaultFunc }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFunc }) {
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
 
@@ -34,6 +34,7 @@ function Menu({ children, items = [], onChange = defaultFunc }) {
             interactive
             offset={[12, 8]}
             delay={[0, 700]}
+            hideOnClick={hideOnClick}
             placement='bottom-end'
             render={attrs => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>

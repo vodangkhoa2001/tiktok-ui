@@ -18,6 +18,9 @@
     align-items: center;
     justify-content: space-between;
 }
+.logo-link {
+    display: flex;
+}
 
 .actions {
     display: flex;
@@ -50,7 +53,7 @@
     padding: 0 6px;
     font-weight: 400;
     font-size: 1.4rem;
-    font-family: 'ProximaNova', sans-serif;
+    font-family: var(--font-family);
     line-height: 2rem;
     border-radius: 10px;
     color: var(--white);
