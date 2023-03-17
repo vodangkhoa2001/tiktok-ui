@@ -4,6 +4,7 @@ import config from '~/config';
 import { GroupIcon, HouseIcon, VideoIcon, HouseIconActive, GroupIconActive, VideoIconActive } from '~/components/Icons';
 import Menu, { MenuItem } from './Menu';
 import styles from './Sidebar.module.scss';
+import ListAccount from '~/components/ListAccount';
 
 const cx = classNames.bind(styles);
 function Sidebar() {
@@ -24,6 +25,8 @@ function Sidebar() {
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<VideoIcon />} activeIcon={<VideoIconActive />} />
             </Menu>
+            <ListAccount label="Suggested accounts" textBtn="See all" />
+            <ListAccount label="Following accounts" textBtn="See more" />
         </aside>
     );
 }
