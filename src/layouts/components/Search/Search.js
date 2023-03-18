@@ -4,68 +4,68 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 
-import * as searchServices from '~/services/searchService'
-import { Wrapper as PopperWrapper } from '~/components/Popper'
+import * as searchServices from '~/services/searchService';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 function Search() {
-    const [searchValue, setSearchValue] = useState('')
-    const [searchResult, setSearchResult] = useState([])
-    const [showResult, setShowResult] = useState(true)
-    const [loading, setLoading] = useState(false)
+    const [searchValue, setSearchValue] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+    const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    const deboucedValue = useDebounce(searchValue, 700)
+    const deboucedValue = useDebounce(searchValue, 700);
 
     useEffect(() => {
         if (!deboucedValue.trim()) {
-            setSearchResult([])
+            setSearchResult([]);
             return;
         }
         const fecthApi = async () => {
-            setLoading(true)
+            setLoading(true);
 
-            const result = await searchServices.search(deboucedValue)
-            setSearchResult(result)
+            const result = await searchServices.search(deboucedValue);
+            setSearchResult(result);
 
-            setLoading(false)
-        }
-        fecthApi()
+            setLoading(false);
+        };
+        fecthApi();
     }, [deboucedValue]);
-    const inputRef = useRef()
+    const inputRef = useRef();
 
     const handleClear = () => {
-        setSearchValue('')
-        setSearchResult([])
-        inputRef.current.focus()
-    }
+        setSearchValue('');
+        setSearchResult([]);
+        inputRef.current.focus();
+    };
 
     const handleHideResult = () => {
-        setShowResult(false)
-    }
+        setShowResult(false);
+    };
 
     const handleChange = (e) => {
-        const searchValue = e.target.value
+        const searchValue = e.target.value;
         if (!searchValue.startsWith(' ')) {
-            setSearchValue(searchValue)
+            setSearchValue(searchValue);
         }
-    }
+    };
 
     return (
-        // Using a wrapper <div> tag around the reference 
-        // element solves this by creating a new parentNode context. 
+        // Using a wrapper <div> tag around the reference
+        // element solves this by creating a new parentNode context.
         <div>
             <HeadlessTippy
                 interactive
-                visible={showResult && searchResult.length > 0}
-                render={attrs => (
+                visible={showResult && searchResult?.length > 0}
+                render={(attrs) => (
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            {searchResult.map(result => (
+                            {searchResult.map((result) => (
                                 <AccountItem key={result.id} data={result} />
                             ))}
                         </PopperWrapper>
@@ -77,7 +77,7 @@ function Search() {
                     <input
                         ref={inputRef}
                         value={searchValue}
-                        placeholder='Search account and videos'
+                        placeholder="Search account and videos"
                         spellCheck={false}
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
@@ -88,7 +88,7 @@ function Search() {
                         </button>
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                    <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon />
                     </button>
                 </div>
