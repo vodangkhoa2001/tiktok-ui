@@ -1,25 +1,38 @@
-import PropTypes from 'prop-types'
-import classNames from "classnames/bind";
+import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
-import Button from "~/components/Button";
+import Button from '~/components/Button';
+// import { useContext } from 'react';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 function MenuItem({ data, onClick }) {
-    const classes = cx('menu-item',
-        {
-            separate: data.separate,
-        })
+    const classes = cx('menu-item', {
+        separate: data.separate,
+    });
+
     return (
-        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
-            {data.title}
-        </Button>
+        <>
+            {data.toggle ? (
+                <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
+                    {data.title}
+                    <label className={cx('switch')}>
+                        <input type="checkbox" onChange={(e) => (e.target.checked ? 'dark' : 'light')} />
+                        <span className={cx('slider', 'round')}></span>
+                    </label>
+                </Button>
+            ) : (
+                <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
+                    {data.title}
+                </Button>
+            )}
+        </>
     );
 }
 
 MenuItem.propTypes = {
     data: PropTypes.object.isRequired,
     onClick: PropTypes.func,
-}
+};
 
 export default MenuItem;

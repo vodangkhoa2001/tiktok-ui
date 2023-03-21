@@ -1,9 +1,7 @@
 const { createContext, useState } = require('react');
 
-const theme = createContext('light');
-function AppContext({ children }) {
-    const [isLight, setIsLight] = useState(true);
-    return <AppContext.Provider value={theme}>{children}</AppContext.Provider>;
-}
-
-export default AppContext;
+export const AppContext = createContext({});
+export const AppProvider = ({ children }) => {
+    const [tippy, setTippy] = useState(false);
+    return <AppContext.Provider value={{ tippy, setTippy }}>{children}</AppContext.Provider>;
+};

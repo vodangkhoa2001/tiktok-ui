@@ -7,7 +7,7 @@ import styles from './ListAccount.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ListAccount({ label, textBtn }) {
+function ListAccount({ label, textBtn, tippy = false }) {
     // const [accountValue, setAccountValue] = useState([]);
     // useEffect(()=>{
     //     const fetchApi = async () =>  {

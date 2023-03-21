@@ -25,7 +25,7 @@ function Sidebar() {
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<VideoIcon />} activeIcon={<VideoIconActive />} />
             </Menu>
-            <ListAccount label="Suggested accounts" textBtn="See all" />
+            <ListAccount label="Suggested accounts" textBtn="See all" tippy />
             <ListAccount label="Following accounts" textBtn="See more" />
         </aside>
     );
