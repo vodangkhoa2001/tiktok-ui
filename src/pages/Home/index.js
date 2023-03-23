@@ -1,9 +1,8 @@
-import { Video } from '~/components/Video';
-
+import { UnFollowVideo } from '~/components/Video';
 function Home() {
     return (
         <>
-            <Video />
+            <UnFollowVideo />
         </>
     );
 }

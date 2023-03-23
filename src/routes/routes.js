@@ -9,6 +9,7 @@ import Profile from '~/pages/Profile';
 import Live from '~/pages/Live';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
+import Tag from '~/pages/Tag';
 
 // Public Routes
 export const publicRoutes = [
@@ -18,6 +19,7 @@ export const publicRoutes = [
     { path: config.routes.live, compnent: Live },
     { path: config.routes.upload, compnent: Upload, layout: HeaderOnly },
     { path: config.routes.search, compnent: Search, layout: null },
+    { path: config.routes.tag, compnent: Tag },
 ];
 
 // Private Routes

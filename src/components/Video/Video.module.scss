@@ -14,7 +14,6 @@
         background-color: #16182333;
     }
 }
-
 .avatar {
     width: 56px;
     height: 56px;
@@ -85,20 +84,143 @@ a {
 
 .video-container {
     display: flex;
+    position: relative;
 }
 
 @media screen and (max-width: 1919px) {
-    .video {
+    .div-video {
         height: calc(450px + (100vw - 768px) / 1152 * 100);
     }
 }
+
+@keyframes visibleVideoControl {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes disableVideoControl {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.video-controls {
+    display: none;
+}
+.div-video {
+    position: relative;
+    &:hover {
+        .video-controls {
+            position: absolute;
+            bottom: 14px;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            animation: visibleVideoControl ease-in-out 0.4s;
+
+            .play-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+                color: var(--white);
+                background-color: transparent;
+                cursor: pointer;
+            }
+            .mute-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 2rem;
+                color: var(--white);
+                background-color: transparent;
+                cursor: pointer;
+            }
+            .volume-container {
+                position: absolute;
+                right: 12px;
+                bottom: 10px;
+                &:hover {
+                    .volume-control-container {
+                        width: 24px;
+                        height: 64px;
+                        margin: 8px 7px 0;
+                        position: relative;
+                        cursor: initial;
+                        background: rgba(22, 24, 35, 0.34);
+                        border-radius: 32px;
+                        animation: visibleVideoControl ease-in 0.3s;
+                    }
+
+                    .volume-control-process {
+                        width: 2px;
+                        height: 48px;
+                        background-color: rgba(255, 255, 255, 0.34);
+                        position: absolute;
+                        left: 11px;
+                        top: 8px;
+                        bottom: 8px;
+                        cursor: pointer;
+                        border-radius: 4px;
+                    }
+
+                    .volume-control-circle {
+                        width: 12px;
+                        height: 12px;
+                        background-color: rgb(255, 255, 255);
+                        border-radius: 12px;
+                        position: absolute;
+                        left: 6px;
+                        bottom: 8px;
+                        cursor: pointer;
+                        z-index: 1;
+                        transform: translateY(0);
+                    }
+
+                    .volume-control-bar {
+                        width: 2px;
+                        height: 48px;
+                        background-color: rgb(255, 255, 255);
+                        position: absolute;
+                        left: 11px;
+                        bottom: 8px;
+                        cursor: pointer;
+                        transform: scaleY(0);
+                        transform-origin: center bottom;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
+.canvas {
+    display: block;
+    visibility: hidden;
+    height: 100%;
+}
+.video-player {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 .video {
+    display: block;
+    height: 100%;
     border-radius: 8px;
     cursor: pointer;
     object-fit: cover;
     outline: none;
     border: none;
 }
+
 .div-btn {
     display: flex;
     flex-direction: column;
